@@ -264,7 +264,11 @@ body{
 
 #gallery{
 
+<<<<<<< HEAD
     background:#4B5A3F;
+=======
+    background:#000;
+>>>>>>> 219a8a42514fdc35309b4aaa61ae98d34ee227bc
 
     display:none;
 
@@ -414,7 +418,11 @@ body{
 
     object-fit:contain;
 
+<<<<<<< HEAD
     background:#4B5A3F;
+=======
+    background:#000;
+>>>>>>> 219a8a42514fdc35309b4aaa61ae98d34ee227bc
 
 }
 
