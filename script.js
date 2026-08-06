@@ -20,7 +20,8 @@ const status = document.querySelector(".status");
 
 const startButton = document.getElementById("startButton");
 
-const galleryImage = document.getElementById("galleryImage");
+const galleryImageA = document.getElementById("galleryImageA");
+const galleryImageB = document.getElementById("galleryImageB");
 
 const music = document.getElementById("music");
 
@@ -31,6 +32,7 @@ const weddingVideo = document.getElementById("weddingVideo");
 // ===================================================
 
 let currentPhoto = 0;
+let currentLayer = 0;
 const preloadedImages = [];
 
 // La lista de fotos se genera automáticamente
@@ -173,11 +175,17 @@ setTimeout(()=>{
 
 startButton.addEventListener("click",()=>{
 
-    currentPhoto = 0;
+currentPhoto = 0;
+currentLayer = 0;
 
-    showScreen(gallery);
+galleryImageA.src = preloadedImages[0].src;
 
-    showPhoto(currentPhoto);
+galleryImageA.classList.add("active");
+galleryImageB.classList.remove("active");
+
+showScreen(gallery);
+
+showPhoto(0);
 
     if(music){
 
@@ -195,13 +203,17 @@ startButton.addEventListener("click",()=>{
 
 function showPhoto(index){
 
-    galleryImage.classList.remove("fade-active");
+    const current = currentLayer === 0 ? galleryImageA : galleryImageB;
+    const next = currentLayer === 0 ? galleryImageB : galleryImageA;
+
+    next.src = preloadedImages[index].src;
 
     requestAnimationFrame(() => {
 
-        galleryImage.src = preloadedImages[index].src;
+        next.classList.add("active");
+        current.classList.remove("active");
 
-        galleryImage.classList.add("fade-active");
+        currentLayer = currentLayer === 0 ? 1 : 0;
 
     });
 
