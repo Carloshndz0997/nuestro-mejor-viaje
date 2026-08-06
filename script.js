@@ -143,6 +143,8 @@ function showScreen(screen){
     finalQuote.style.display = "none";
     boardingPass.style.display = "none";
 
+    boardingPass.classList.remove("show");
+
     screen.style.display = "flex";
 
 }
@@ -279,18 +281,22 @@ weddingVideo.addEventListener("ended", () => {
 
     showScreen(finalQuote);
 
+  setTimeout(() => {
+
+    finalQuote.classList.add("fadeOut");
+
     setTimeout(() => {
 
-        finalQuote.classList.add("fadeOut");
+        finalQuote.classList.remove("fadeOut");
 
-        setTimeout(() => {
+        showScreen(boardingPass);
 
-            finalQuote.classList.remove("fadeOut");
+        requestAnimationFrame(() => {
+            boardingPass.classList.add("show");
+        });
 
-            showScreen(boardingPass);
+    }, 1200);
 
-        }, 1200);
-
-    }, 4500);
+}, 4500);
 
 });

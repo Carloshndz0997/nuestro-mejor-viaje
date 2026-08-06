@@ -51,6 +51,14 @@ body{
 
 }
 
+#boardingPass.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
 #loader{
 
     display:flex;
@@ -282,7 +290,7 @@ body{
 
 }
 
-#galleryImage{
+.gallery-layer{
 
     width:100vw;
 
@@ -296,13 +304,19 @@ body{
         opacity .35s ease,
         transform .35s ease;
 
-    opacity:1;
+    opacity:0;
 
     user-select:none;
 
     -webkit-user-drag:none;
 
     pointer-events:none;
+
+}
+
+.gallery-layer.active{
+
+    opacity:1;
 
 }
 
@@ -333,32 +347,6 @@ body{
     letter-spacing:3px;
 
     opacity:.65;
-
-}
-
-/* Indicador */
-
-#gallery::after{
-
-    content:"Toca cualquier parte para continuar";
-
-    position:absolute;
-
-    bottom:70px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    font-size:13px;
-
-    letter-spacing:2px;
-
-    color:white;
-
-    opacity:.35;
-
-    animation:fadeMessage 2.5s infinite;
 
 }
 
