@@ -31,6 +31,7 @@ const weddingVideo = document.getElementById("weddingVideo");
 // ===================================================
 
 let currentPhoto = 0;
+const preloadedImages = [];
 
 // La lista de fotos se genera automáticamente
 const photos = [];
@@ -112,6 +113,19 @@ const ordered = [
 photos.length = 0;
 photos.push(...ordered);
 
+// ====================================
+// PRECARGA INTELIGENTE
+// ====================================
+
+photos.forEach(src => {
+
+    const img = new Image();
+
+    img.src = src;
+
+    preloadedImages.push(img);
+
+});
 
 // ===================================================
 // FUNCIONES
@@ -162,6 +176,7 @@ startButton.addEventListener("click",()=>{
     currentPhoto = 0;
 
     showScreen(gallery);
+
     showPhoto(currentPhoto);
 
     if(music){
@@ -173,6 +188,7 @@ startButton.addEventListener("click",()=>{
     }
 
 });
+
 // ===================================================
 // GALERÍA
 // ===================================================
@@ -180,16 +196,14 @@ startButton.addEventListener("click",()=>{
 function showPhoto(index){
 
     galleryImage.classList.remove("fade-active");
-    galleryImage.classList.add("fade-enter");
 
-    setTimeout(()=>{
+    requestAnimationFrame(() => {
 
-        galleryImage.src = photos[index];
+        galleryImage.src = preloadedImages[index].src;
 
-        galleryImage.classList.remove("fade-enter");
         galleryImage.classList.add("fade-active");
 
-    },220);
+    });
 
 }
 
