@@ -187,7 +187,6 @@ galleryImageB.classList.remove("active");
 
 showScreen(gallery);
 
-showPhoto(0);
 
     if(music){
 
