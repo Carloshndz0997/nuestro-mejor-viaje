@@ -302,7 +302,11 @@ body{
 
     object-fit:contain;
 
-    object-position:center;
+    object-position:center center;
+
+    display:block;
+
+    margin:auto;
 
     transition:
         opacity .35s ease,
