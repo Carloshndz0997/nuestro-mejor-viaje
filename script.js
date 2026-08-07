@@ -257,12 +257,6 @@ gallery.addEventListener("click",(e)=>{
     // FIN DE LA GALERÍA
     else{
 
-        if(music){
-
-            music.pause();
-
-        }
-
         showScreen(videoSection);
 
         weddingVideo.currentTime = 0;
@@ -280,24 +274,46 @@ weddingVideo.addEventListener("ended", () => {
 
     weddingVideo.pause();
 
+    if (music) {
+
+        let fade = setInterval(() => {
+
+            if (music.volume > 0.05) {
+
+                music.volume -= 0.05;
+
+            } else {
+
+                clearInterval(fade);
+
+                music.pause();
+                music.currentTime = 0;
+                music.volume = 1;
+
+            }
+
+        }, 50);
+
+    }
+
     showScreen(finalQuote);
-
-  setTimeout(() => {
-
-    finalQuote.classList.add("fadeOut");
 
     setTimeout(() => {
 
-        finalQuote.classList.remove("fadeOut");
+        finalQuote.classList.add("fadeOut");
 
-        showScreen(boardingPass);
+        setTimeout(() => {
 
-        requestAnimationFrame(() => {
-            boardingPass.classList.add("show");
-        });
+            finalQuote.classList.remove("fadeOut");
 
-    }, 1200);
+            showScreen(boardingPass);
 
-}, 4500);
+            requestAnimationFrame(() => {
+                boardingPass.classList.add("show");
+            });
+
+        }, 1200);
+
+    }, 4500);
 
 });
