@@ -210,14 +210,16 @@ function showPhoto(index){
 
     next.src = preloadedImages[index].src;
 
-    requestAnimationFrame(() => {
+next.style.objectPosition = "center center";
 
-        next.classList.add("active");
-        current.classList.remove("active");
+requestAnimationFrame(() => {
 
-        currentLayer = currentLayer === 0 ? 1 : 0;
+    next.classList.add("active");
+    current.classList.remove("active");
 
-    });
+    currentLayer = currentLayer === 0 ? 1 : 0;
+
+});
 
 }
 
